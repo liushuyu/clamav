@@ -1,8 +1,18 @@
 {
     "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
     "name": "clamav",
-    "builtin-baseline": "f05b2b639a4ba6bbd8b291158ab069732f249f3e",
+    "builtin-baseline": "f7423ee180c4b7f40d43402c2feb3859161ef625",
     "version": "1.0",
+    "overrides": [
+        {
+            "name": "curl",
+            "version": "7.88.1"
+        },
+        {
+            "name": "check",
+            "version": "0.14.0"
+        }
+    ],
     "dependencies": [
         {
             "name": "curl",
