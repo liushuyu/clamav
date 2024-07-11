@@ -18,7 +18,6 @@ on:
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
-  VCPKG_GIT_REF: 8a9a97315aefb3f8bc5d81bf66ca0025938b9c91
 
 jobs:
   build-windows:
@@ -44,12 +43,15 @@ jobs:
       # Restore from cache the previously built ports. If cache-miss, download, build vcpkg ports.
       - name: Restore vcpkg ports from cache or install vcpkg
         # Download and build vcpkg, without installing any port. If content is cached already, it is a no-op.
-        uses: lukka/run-vcpkg@v7.4
+        uses: lukka/run-vcpkg@v11.5
         id: runvcpkg
+        env:
+          VCPKG_DEFAULT_TRIPLET: "x64-windows"
+          VCPKG_FEATURE_FLAGS: manifests
         with:
-          vcpkgArguments: "curl[openssl] json-c libxml2 pcre2 check pthreads zlib pdcurses bzip2"
           vcpkgGitCommitId: "${{ env.VCPKG_GIT_REF }}"
-          vcpkgTriplet: "x64-windows"
+          vcpkgJsonGlob: '**/vcpkg.json'
+          runVcpkgInstall: true
 
       - name: Print the VCPKG_ROOT & VCPKG_TRIPLET (for debugging)
         shell: bash
