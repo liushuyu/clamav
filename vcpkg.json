@@ -1,0 +1,27 @@
+{
+    "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+    "name": "clamav",
+    "builtin-baseline": "f05b2b639a4ba6bbd8b291158ab069732f249f3e",
+    "version": "1.0",
+    "dependencies": [
+        {
+            "name": "curl",
+            "features": ["openssl"]
+        },
+        "json-c",
+        "libxml2",
+        "pcre2",
+        "check",
+        "pthreads",
+        "zlib",
+        {
+            "name": "pdcurses",
+            "platform": "windows & !mingw"
+        },
+        {
+            "name": "ncurses",
+            "platform": "!windows | mingw"
+        },
+        "bzip2"
+    ]
+}
