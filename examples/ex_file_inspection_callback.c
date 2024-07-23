@@ -29,6 +29,10 @@
 #ifndef _WIN32
 #include <unistd.h>
 #endif
+#ifdef _MSC_VER
+#include <basetsd.h>
+typedef SSIZE_T ssize_t;
+#endif
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
